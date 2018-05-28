@@ -1,24 +1,28 @@
 fun main(args: Array<String>) {
     helloKotlin(args[0])
 
-    /*
-    var fortune : String
-    for (i in 1..10) {
+    var fortune : String = ""
+    while (!fortune.contains("Take it easy")) {
         fortune = getFortuneCookie()
         println("Your fortune is: $fortune")
-        if (fortune.contains("Take it easy")) break
     }
-    */
 
-    println(whatShouldIDoToday("happy", "sunny"))
+    println(whatShouldIDoToday(readLine()!!, "Sunny"))
 }
 
 fun whatShouldIDoToday(mood: String, weather: String = "Sunny", temperature: Int = 24) : String {
     return when {
-        mood == "happy" && weather == "Sunny" -> "go for a walk"
+        shouldGoForWalk(mood, weather) -> "go for a walk"
+        shouldStayInBed(mood, weather, temperature) -> "stay in bed"
+        shouldGoSwimming(temperature) -> "go swimming"
         else -> "Stay home and read."
     }
 }
+
+fun shouldGoSwimming(temperature: Int) = temperature > 35
+fun shouldStayInBed(mood: String, weather: String, temperature: Int) = mood == "sad" && weather == "rainy" && temperature == 0
+fun shouldGoForWalk(mood: String, weather: String) = mood == "happy" && weather == "Sunny"
+
 
 fun getFortuneCookie() : String {
     val birthday = getBirthday()
