@@ -1,5 +1,7 @@
 package Spice
 
+import Spices.Curry
+
 fun main(args: Array<String>) {
     val spice = makeSalt()
     println("Name: ${spice.name}, Heat: ${spice.heat}")
@@ -14,6 +16,9 @@ fun main(args: Array<String>) {
     )
     val spicelist = spices1.filter {it.heat < 5}
     println(spicelist)
+
+    val curry = Curry("curry", "medium")
+    println(curry)
 }
 
 fun makeSalt() = SimpleSpice("salt")
