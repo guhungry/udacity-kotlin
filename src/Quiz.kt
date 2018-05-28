@@ -1,11 +1,22 @@
 fun main(args: Array<String>) {
     helloKotlin(args[0])
 
+    /*
     var fortune : String
     for (i in 1..10) {
         fortune = getFortuneCookie()
         println("Your fortune is: $fortune")
         if (fortune.contains("Take it easy")) break
+    }
+    */
+
+    println(whatShouldIDoToday("happy", "sunny"))
+}
+
+fun whatShouldIDoToday(mood: String, weather: String = "Sunny", temperature: Int = 24) : String {
+    return when {
+        mood == "happy" && weather == "Sunny" -> "go for a walk"
+        else -> "Stay home and read."
     }
 }
 
