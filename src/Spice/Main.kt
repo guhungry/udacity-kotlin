@@ -1,7 +1,5 @@
 package Spice
 
-import Spices.Curry
-
 fun main(args: Array<String>) {
     val spice = makeSalt()
     println("Name: ${spice.name}, Heat: ${spice.heat}")
