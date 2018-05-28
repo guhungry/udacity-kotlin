@@ -7,8 +7,21 @@ fun main(args: Array<String>) {
 
 fun feedTheFish() {
     val day = randomDay()
-    val food = "pallets"
+    val food = fishFood(day)
     println("Today is ${day} the fish eats ${food}")
+}
+
+fun fishFood(day: String): String {
+    return when (day) {
+        "Monday" -> "flakes"
+        "Tuesday" -> "pallets"
+        "Wednesday" -> "redworms"
+        "Thursday" -> "granules"
+        "Friday" -> "mosquitoes"
+        "Saturday" -> "lettuce"
+        "Sunday" -> "plankton"
+        else -> "fasting"
+    }
 }
 
 fun randomDay() : String {
