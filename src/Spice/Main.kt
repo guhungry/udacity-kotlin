@@ -19,6 +19,12 @@ fun main(args: Array<String>) {
 
     val curry = Curry("curry", "medium")
     println(curry)
+
+
+    val spiceCabinet = listOf(SpiceContainer(Curry("Yellow Curry", "mild")),
+            SpiceContainer(Curry("Red Curry", "medium")),
+            SpiceContainer(Curry("Green Curry", "spicy")))
+    for (container in spiceCabinet) println(container.lable)
 }
 
 fun makeSalt() = SimpleSpice("salt")
