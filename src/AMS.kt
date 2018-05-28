@@ -1,7 +1,19 @@
 import java.util.*
 
 fun main(args: Array<String>) {
-    dayOfWeek()
+    // dayOfWeek()
+    feedTheFish()
+}
+
+fun feedTheFish() {
+    val day = randomDay()
+    val food = "pallets"
+    println("Today is ${day} the fish eats ${food}")
+}
+
+fun randomDay() : String {
+    val week = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+    return week[Random().nextInt(7)]
 }
 
 fun dayOfWeek() {
