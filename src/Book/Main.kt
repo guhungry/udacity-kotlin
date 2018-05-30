@@ -3,6 +3,18 @@ package Book
 fun main(args: Array<String>) {
     learnPairAndTriplet()
     learnCollections()
+    quizPuppyBook()
+}
+
+fun quizPuppyBook() {
+    val puppy = Puppy()
+    val book = Book("Hamlet", "Shakespear", "1555")
+
+    while (book.pages > 0) {
+        puppy.playWithBook(book)
+        println("${book.pages} left in ${book.title}")
+    }
+    println("Sad puppy, no more pages in ${book.title}. ")
 }
 
 fun learnCollections() {
