@@ -36,12 +36,17 @@ class TapWaterCleaner: Cleaner<TapWater> {
     }
 }
 
+fun <T: WaterSupply> isWaterClean(aquarium: Aquarium<T>) {
+    println("aquarium water is clean : ${!aquarium.waterSupply.needsProcessed}")
+}
+
 fun main(args: Array<String>) {
     val cleaner = TapWaterCleaner()
     val aquariumTap = Aquarium(TapWater())
+    isWaterClean(aquariumTap)
     aquariumTap.waterSupply.addChemicalsCleaners()
     aquariumTap.addWater(cleaner)
-
+    isWaterClean(aquariumTap)
 
     val aquariumStore = Aquarium(FishStoreSupply())
     aquariumStore.addWater()
