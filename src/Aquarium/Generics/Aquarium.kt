@@ -25,6 +25,7 @@ class Aquarium<T: WaterSupply> (var waterSupply: T) {
         println("adding water from ${waterSupply::class.simpleName}")
     }
 }
+inline fun <reified R: WaterSupply> Aquarium<*>.hasWaterSupplyOfType() = waterSupply is R
 
 interface Cleaner<in T: WaterSupply> {
     fun clean(waterSupply: T)
@@ -47,6 +48,8 @@ fun main(args: Array<String>) {
     aquariumTap.waterSupply.addChemicalsCleaners()
     aquariumTap.addWater(cleaner)
     isWaterClean(aquariumTap)
+    println(aquariumTap.hasWaterSupplyOfType<TapWater>())
+    println(aquariumTap.hasWaterSupplyOfType<LakeWater>())
 
     val aquariumStore = Aquarium(FishStoreSupply())
     aquariumStore.addWater()
