@@ -17,7 +17,11 @@ class Building<T: BaseBuildingMaterial>(var buildingMaterial: T) {
     }
 }
 
+fun <T: BaseBuildingMaterial> isSmallBuilding(building: Building<T>) = println(if (building.actualMaterialsNeeded < 500) "small building" else "large building")
+
 fun main(args: Array<String>) {
     Building(Wood()).build()
+    isSmallBuilding(Building(Wood()))
     Building(Brick()).build()
+    isSmallBuilding(Building(Brick()))
 }
