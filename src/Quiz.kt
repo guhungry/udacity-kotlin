@@ -1,4 +1,5 @@
 fun main(args: Array<String>) {
+    /*
     helloKotlin(args[0])
 
     var fortune : String = ""
@@ -8,9 +9,28 @@ fun main(args: Array<String>) {
     }
 
     println(whatShouldIDoToday(readLine()!!, "Sunny"))
+    */
+
+    higherOrderFunction()
 }
 
-fun whatShouldIDoToday(mood: String, weather: String = "Sunny", temperature: Int = 24) : String {
+fun higherOrderFunction() {
+    val numbers = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 0)
+    println(numbers.divisibleBy { it.rem(3) })
+
+}
+
+fun List<Int>.divisibleBy(block: (Int) -> Int): List<Int> {
+    val result = mutableListOf<Int>()
+    for (item in this) {
+        if (block(item) == 0) {
+            result.add(item)
+        }
+    }
+    return result
+}
+
+fun whatShouldIDoToday(mood: String, weather: String = "Sunny", temperature: Int = 24): String {
     return when {
         shouldGoForWalk(mood, weather) -> "go for a walk"
         shouldStayInBed(mood, weather, temperature) -> "stay in bed"
@@ -24,7 +44,7 @@ fun shouldStayInBed(mood: String, weather: String, temperature: Int) = mood == "
 fun shouldGoForWalk(mood: String, weather: String) = mood == "happy" && weather == "Sunny"
 
 
-fun getFortuneCookie() : String {
+fun getFortuneCookie(): String {
     val birthday = getBirthday()
     return getFortune(birthday)
 }
@@ -45,7 +65,7 @@ fun getFortune(birthday: Int): String {
             "Treasure your friends because they are your greatest fortune."
     )
     val index = when (birthday) {
-        28,31 -> 4
+        28, 31 -> 4
         in 1..7 -> 2
         else -> birthday.rem(fortunes.size)
     }
